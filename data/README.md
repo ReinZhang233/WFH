@@ -1,1 +1,1 @@
-This folder contains the raw data tables.
+This folder contains the raw data.
