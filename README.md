@@ -1,3 +1,5 @@
+This project analyzes different variables associated with teleworking, which is also known as Working From Home(WFH). Specifically, we want to evaluate the relationships between WFH, COVID-19, and the influences posted by different geographic and industrial factors.
+
 This is a template for the EDAV final project. It is based on the template created with *File, New Project..., New Directory, Book Project using bookdown* in RStudio. 
 
 
