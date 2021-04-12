@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data Sources</a><ul>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#data-description"><i class="fa fa-check"></i><b>2.1</b> Data Description</a></li>
 <li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#limitations"><i class="fa fa-check"></i><b>2.2</b> Limitations</a></li>
 </ul></li>
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-7"><a href="results.html#cb5-7"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="op">+</span></span>
 <span id="cb5-8"><a href="results.html#cb5-8"></a><span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette=</span><span class="st">&quot;Set4&quot;</span>)<span class="op">+</span></span>
 <span id="cb5-9"><a href="results.html#cb5-9"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Time Series Analysis on Telework Population for different Sectors&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Overall, the general population of telework employees tend to increase over the last 10 years. Among all the sectors being investigated, Service and Management,Business and Financial Sector seemed contribute to the increase in work-from-home employees’ population the most.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="results.html#cb6-1"></a><span class="co">#create line plots representing the change in WFH employees over total employed percentages before COVID</span></span>
 <span id="cb6-2"><a href="results.html#cb6-2"></a><span class="co">#calculate percentage table</span></span>
@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-28"><a href="results.html#cb6-28"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">fill =</span> <span class="st">&quot;#69b3a2&quot;</span>,<span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></span>
 <span id="cb6-29"><a href="results.html#cb6-29"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Sector)<span class="op">+</span></span>
 <span id="cb6-30"><a href="results.html#cb6-30"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>The plot above shows the fluctuation of growth rate with WFH population within selected Sectors over years. We can see that some Sectors, such as Construction, Production, Office and Administration, Services and Transportation seem to have high volatility in the changes of WFH population percentages, with fluctuation ranging between -0.5% to 1%. Management, Business, Financial and Professional Sectors seem to have less fluctuation in the change of rate.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="results.html#cb7-1"></a><span class="co">#change of WFH workers proportion over years</span></span>
 <span id="cb7-2"><a href="results.html#cb7-2"></a>num_bef &lt;-<span class="st"> </span>before<span class="op">%&gt;%</span><span class="kw">gather</span>(<span class="st">&quot;Sector&quot;</span>,<span class="st">&quot;Population&quot;</span>,<span class="op">-</span><span class="kw">c</span>(Year,WFH_only))<span class="op">%&gt;%</span><span class="kw">group_by</span>(Year,WFH_only)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">Population =</span> <span class="kw">sum</span>(Population))</span>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-15"><a href="results.html#cb7-15"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> wfh_aft,<span class="kw">aes</span>(<span class="dt">x =</span> Year,<span class="dt">y =</span> Population,<span class="dt">fill =</span> Status))<span class="op">+</span></span>
 <span id="cb7-16"><a href="results.html#cb7-16"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="op">+</span></span>
 <span id="cb7-17"><a href="results.html#cb7-17"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Time Series Analysis on </span><span class="ch">\n</span><span class="st">the Increase of Telework population due to COVID&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>In general, we can see that the increase of telework population due to covid has a greater portion among the number of all employed workers starting from May 2020 and its proportion started to decrease as time pass by. Even though we could not get the data before May 2020, this trend may suggest that at the beginning of 2020, when COVID had just begun, the ratio of covid-lead WFH population over the total employed population would be even higher. Another trend we can see from the graph is that the total employed workers’ number is gradually increasing.</p>
 
 </div>
