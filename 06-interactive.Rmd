@@ -1,3 +1,62 @@
 # Interactive component
 
+<script src="https://d3js.org/d3.v6.js"></script>
+ <head> 
+    <title>Id Attributes</title> 
+    <style>  
+        #business { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         } 
+         #durableGoods { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         }
+	#manufacturing { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         } 
+	#nonDurableGoods { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         } 
+ 	#nonFinancial { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         } 
+	#nonFarm { 
+            color:black; 
+            font-size:14px; 
+            font-weight:bold; 
+            text-align:center; 
+            border-style: dotted;
+         } 
+	
 
+    </style> 
+</head> 
+ <div id="plot"></div> 
+ <p style="font-size: 24px"> Click Text Bars ↓ </p>
+ <p id="business" >Change to Business Sector</p>
+ <p id="durableGoods">Change to Durable Goods Sector</p>
+ <p id="manufacturing">Change to Manufacturing Sector</p>
+ <p id="nonDurableGoods">Change to Non-durable Goods Sector</p>
+ <p id="nonFinancial">Change to Non-financial Corporations Sector</p>
+ <p id="nonFarm">Change to Non-farm Sector</p>
+ 
+ <script src="scripts/interactive_bar.js"></script>
