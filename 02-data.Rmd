@@ -8,4 +8,8 @@ We also considered [U.S. BLS Beta Labs](https://beta.bls.gov/dataQuery/find?st=2
 ## Limitations
 Though the data provided suitable information for our topic, it had some limitations. One issue was that for covid-concerrent data, we can only have access to the monthly summaries no earlier than May, 2020, while the before-covid data only have yearly summaries, which ended at 2019. Since we don’t have the first several month’s data, we cannot generate a yearly summary from the covid-concerrent table. That would give us a data gap from Jan to May of 2020. We might need to give an estimate or generate a visualization of the trend when dealing with this problem.
 
+
 For the data extracted from U.S. BLS Beta Labs, those data sets are quarterly averaged or weekly averaged. Since data for a more specific time period was not published, we could not depict a more time-sensitive change. Also, we were not able to get the first quarter data of 2021. For work from home data, we have a missing value, but this did not influence the initial analysis. Missing values were stated in "04-missing part". Another issue was that the sources provided different definitions for industrial sectors, so the sectors for productivity and payrolls could not be uniformed. To solve this issue, we matched some of the sectors to estimate our data.
+
+
+

@@ -1,9 +1,10 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Analysis on the Telework Employees' Features before and under COVID"
+author: "Yucen Wang, Renyin Zhang, Zikun Dong"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
 # Introduction
 
+During the pandemic period, States’ governors published health guidance to restrict social activities and assure public safety. Hence, most employees and office workers had to shift to a “remote” working mode, and teleworking, as a new fashion in the work arrangement type, has become a controversial topic as we walked through 2020. As graduate students, we have already collected some diverging opinions from our fellow colleagues. Some tend to easily get disturbed by different entertaining options when by themselves and have a hard time to truly focus, while others find out that studying alone helps them easily concentrate and increase their productivity while they can maintain flexible daily schedules. Students might not be the only group who face the same controversy. Therefore, it triggered our interests, as we wanted to know how work from home employees are affected by the pandemic and related policies. To solve this problem, we had to figure out  how the general trends of work from home employees changed during the pandemic; whether there is a significant relationship between productivity and percentage of employees who telework; and the effect of WFH on salary within different industries and sectors over time.
