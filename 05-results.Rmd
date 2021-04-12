@@ -17,9 +17,6 @@ after <- read_csv("./data/after.csv")
 ```
 
 ```{r,warning=F,message=F}
-before <- read.csv("before.csv",header = T)
-after <- read.csv("after.csv",header = T)
-
 # using stacked bar plot to show the numbers of WFH people in each sector
 before <- before[,-c(3,4)]
 num_bef <- before%>%gather("Sector","Population",-c(Year,WFH_only))
