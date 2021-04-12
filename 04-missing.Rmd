@@ -16,12 +16,12 @@ x <- missing_data.frame(before)
 image(x)
 ```
 
-We can see that for the data set that describes WFH population before COVID, occupation sectors such as Farming, Fishing and Forestry contains lots of missing summary data. That is likely due to the fact that workers from Farming Sectors are likely working from "home" and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.
+We can see that for the data set that describes WFH population before COVID, occupation sectors such as Farming, Fishing and Forestry contains lots of missing summary data. That is likely due to the fact that workers from Farming Sectors are likely working from "home" and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.  
 
-For non-financial-corporation, there are only 11 rows. Productivity for the fourth quarter of 2020 is missing. However, this does not affect the analysis for productivity when plotting the time series plot. For the scatterplot, we will trimmed the WFM data to make sure two data frames are matched with no missing values. (Trimmed data is included in data transformation part.)
+
+Productivity part missing value
 ```{r,warning=FALSE}
-
-non_financial_corporations_pro <- read.csv("data/non_financial_corporations_productivity.csv", header=T,stringsAsFactors = F)
+non_financial_corporations_pro <- read.csv("./data/non_financial_corporations_productivity.csv", header=T,stringsAsFactors = F)
 tail(non_financial_corporations_pro,4)
 newrow <- data.frame(Series.ID="PRS88003092",
                      Year=2020,
@@ -39,3 +39,5 @@ ggplot(data = non_financial_corporations_pro, aes(x = Label, y = Value,group=as.
   ggtitle("Productivity with Missing Value in Non-financial Sector") +
   xlab("Time") + ylab("Output (per hour)")
 ```
+
+For non-financial-corporation, there are only 11 rows. Productivity for the fourth quarter of 2020 is missing. However, this does not affect the analysis for productivity when plotting the time series plot. For the scatterplot, we will trimmed the WFM data to make sure two data frames are matched with no missing values. (Trimmed data is included in data transformation part.)  
