@@ -1,1 +1,8 @@
 # Data transformation
+
+From the websites mentioned in the Data Sources section, we downloaded our data. Data from [the U.S Bureau of Labor Statistics](https://www.bls.gov/) followed certain formats and contained redundant headers. We removed those headers in order to import the data into R for further cleaning process. 
+
+
+To clean the data, we carefully dealt with the missing values corresponding different types of data. Some columns were dropped respecting certain situations.
+
+We changed data type for some primary features we are interested in analyzing. For example, features representing Time were originally stored in numeric or character format; they were transformed into "Date" or "yearmon" data types to better fit the desired graphs.
