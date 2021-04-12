@@ -7,6 +7,9 @@ library(mi)
 before <- read_csv("./data/before.csv")
 ```
 
+## Missing data in WFH employees' population by occupation sectors
+Below is a table that summarized the missing data in WFH employees population by sectors over time.
+
 ```{r, warning = F}
 colSums(is.na(before))
 
@@ -16,10 +19,10 @@ x <- missing_data.frame(before)
 image(x)
 ```
 
-We can see that for the data set that describes WFH population before COVID, occupation sectors such as Farming, Fishing and Forestry contains lots of missing summary data. That is likely due to the fact that workers from Farming Sectors are likely working from "home" and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.  
+We can see that for the data set that describes WFH population before COVID, occupation sectors such as 'Farming, Fishing and Forestry' contains lots of missing summary data. That is likely due to the fact that workers from 'Farming' Sectors are likely working from "home" and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.  
 
 
-Productivity part missing value
+## Missing data in Productivity features
 ```{r,warning=FALSE}
 non_financial_corporations_pro <- read.csv("./data/non_financial_corporations_productivity.csv", header=T,stringsAsFactors = F)
 tail(non_financial_corporations_pro,4)
