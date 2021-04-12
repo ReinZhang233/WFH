@@ -5,5 +5,12 @@ limitations
 data-transformation
 missing-values
 results
+part-i-employees-before-and-after-covid-19
+part-ii-productivity
+labor-productivity
+work-hours
+unit-labor-cost
+relationship-between-producitivity-and-work-from-home-employees
+part-iii
 interactive-component
 conclusion
