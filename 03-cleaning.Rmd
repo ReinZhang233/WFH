@@ -1,7 +1,7 @@
 # Data transformation
 
 From the websites mentioned in the Data Sources section, we downloaded our data. Data from [the U.S Bureau of Labor Statistics](https://www.bls.gov/) followed certain formats and contained redundant headers. We removed those headers in order to import the data into R for further cleaning process. 
-
+Also, different sectors have their own data sets for each topic. We reorganized the structure of the tables and combined some of them in order to generate desired graphs. 
 
 To clean the data, we carefully dealt with the missing values corresponding different types of data. Some columns were dropped respecting certain situations.
 
