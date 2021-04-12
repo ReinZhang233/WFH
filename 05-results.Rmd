@@ -1,5 +1,6 @@
 # Results
 
+### Part I: Employees before and after COVID-19
 ```{r libs and df, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -83,8 +84,246 @@ wfh_aft<-wfh_aft%>%gather("Status","Population",-Year)
 #stack bar plot for increase of wfh population due to covid
 ggplot(data = wfh_aft,aes(x = Year,y = Population,fill = Status))+
   geom_bar(stat = "identity")+
+  theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Time Series Analysis on \nthe Increase of Telework population due to COVID")
 
 ```
 
 In general, we can see that the increase of telework population due to covid has a greater portion among the number of all employed workers starting from May 2020 and its proportion started to decrease as time pass by. Even though we could not get the data before May 2020, this trend may suggest that at the beginning of 2020, when COVID had just begun, the ratio of covid-lead WFH population over the total employed population would be even higher. Another trend we can see from the graph is that the total employed workers' number is gradually increasing.
+
+
+
+### Part II: Productivity  
+## A). Labor Productivity  
+```{r}
+library(dplyr)
+# Import productivity data
+business_pro <- read.csv("./data/business_productivity.csv", header=T,stringsAsFactors = F)
+durable_goods_pro <- read.csv("./data/durable_goods_productivity.csv", header=T,stringsAsFactors = F)
+non_durable_goods_pro <- read.csv("./data/non_durable_goods_productivity.csv", header=T,stringsAsFactors = F)
+manufacturing_pro <- read.csv("./data/manufacturing_productivity.csv", header=T,stringsAsFactors = F)
+nonfarm_business_pro <- read.csv("./data/nonfarm_business_productivity.csv", header=T,stringsAsFactors = F)
+non_financial_corporations_pro <- read.csv("./data/non_financial_corporations_productivity.csv", header=T,stringsAsFactors = F)
+
+```
+
+
+```{r}
+# Transform data and combine their rows into one productivity data frame
+business_pro$Sector <- c("Business")
+business_pro <- business_pro[,4:6]
+
+nonfarm_business_pro$Sector <- c("Nonfarm Business")
+nonfarm_business_pro <- nonfarm_business_pro[,4:6]
+
+durable_goods_pro$Sector <- c("Durable Goods")
+durable_goods_pro <- durable_goods_pro[,4:6]
+
+non_durable_goods_pro$Sector <- c("Non Durable Goods")
+non_durable_goods_pro <- non_durable_goods_pro[,4:6]
+
+manufacturing_pro$Sector <- c("Manufacturing")
+manufacturing_pro <- manufacturing_pro[,4:6]
+
+non_financial_corporations_pro$Sector <- c("Non Financial Corporations")
+non_financial_corporations_pro <- non_financial_corporations_pro[,4:6]
+
+productivity <- rbind(business_pro,nonfarm_business_pro,durable_goods_pro,non_durable_goods_pro,manufacturing_pro,non_financial_corporations_pro)
+
+```
+
+
+```{r}
+# Create Time series plot of productivity from 2018 to 2020
+ggplot(data = productivity, aes(x = Label, y = Value,group = as.factor(Sector), color = Sector)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Labor productivity from 2018 to 2020") +
+  xlab("Time") + ylab("Output (per hour)")
+ggplot(productivity,aes(x = Label, y = Value,group = as.factor(Sector)))+
+  geom_point(size=1, color="#69b3a2") +
+  geom_line(color="#69b3a2")+
+  geom_hline(yintercept=0,alpha = 0.3,color = "#69b3a2")+
+  ggtitle("Labor productivity from 2018 to 2020") +
+  xlab("Time") +
+  ylab("Output (per hour)") + 
+  geom_area(fill = "#69b3a2",alpha = 0.4)+
+  facet_wrap(~as.factor(Sector)) +
+  theme(plot.title = element_text(size = 20, face = "bold"), axis.text.x=element_text(angle = 90))
+```
+
+From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might caused by the increasing number of Work From Home employees.  
+
+
+ 
+## B). Work hours
+```{r}
+# Import weekly average work hours data
+business_wh <- read.csv("./data/Index_business_avghours.csv", header=T,stringsAsFactors = F)
+durable_goods_wh <- read.csv("./data/Index_durable_goods_avghours.csv", header=T,stringsAsFactors = F)
+non_durable_goods_wh <- read.csv("./data/Index_non_durable_goods_avghours.csv", header=T,stringsAsFactors = F)
+manufacturing_wh <- read.csv("./data/Index_manufacturing_avghours.csv", header=T,stringsAsFactors = F)
+nonfarm_business_wh <- read.csv("./data/Index_nonfarm_business_avghours.csv", header=T,stringsAsFactors = F)
+non_financial_corporations_wh <- read.csv("./data/Index_nonfinancial_avghours.csv", header=T,stringsAsFactors = F)
+```
+
+
+
+```{r}
+# Transform data and combine their rows into one work_hours data frame
+business_wh$Sector <- c("Business")
+business_wh <- business_wh[,4:6]
+
+nonfarm_business_wh$Sector <- c("Nonfarm Business")
+nonfarm_business_wh <- nonfarm_business_wh[,4:6]
+
+durable_goods_wh$Sector <- c("Durable Goods")
+durable_goods_wh <- durable_goods_wh[,4:6]
+
+non_durable_goods_wh$Sector <- c("Non Durable Goods")
+non_durable_goods_wh <- non_durable_goods_wh[,4:6]
+
+manufacturing_wh$Sector <- c("Manufacturing")
+manufacturing_wh <- manufacturing_wh[,4:6]
+
+non_financial_corporations_wh$Sector <- c("Non Financial Corporations")
+non_financial_corporations_wh <- non_financial_corporations_wh[,4:6]
+
+work_hours <- rbind(business_wh,nonfarm_business_wh,durable_goods_wh,non_durable_goods_wh,manufacturing_wh,non_financial_corporations_wh)
+```
+
+
+
+```{r}
+# Create Time series plot of weekly average work hours from 2018 to 2020
+ggplot(data = work_hours, aes(x = Label, y = Value,group = as.factor(Sector), color = Sector)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Weekly Average Work Hours from 2018 to 2020") +
+  xlab("Time") + ylab("Hours Worked")
+
+```
+
+Then we check work hours from 2018-2020. Work hours have apparent decrease for all sectors in the first quarter of 2020. This shows an opposite trend with productivity.  
+
+
+## C). Unit labor cost
+```{r}
+# Import labor costs data
+business_cost <- read.csv("./data/business_cost.csv", header=T,stringsAsFactors = F)
+durable_goods_cost <- read.csv("./data/durable_goods_cost.csv", header=T,stringsAsFactors = F)
+non_durable_goods_cost <- read.csv("./data/non_durable_goods_cost.csv", header=T,stringsAsFactors = F)
+manufacturing_cost <- read.csv("./data/manufacturing_cost.csv", header=T,stringsAsFactors = F)
+nonfarm_business_cost <- read.csv("./data/nonfarm_business_cost.csv", header=T,stringsAsFactors = F)
+non_financial_corporations_cost <- read.csv("./data/nonfinancial_cost.csv", header=T,stringsAsFactors = F)
+```
+
+
+
+```{r}
+# Transform data and combine their rows into one costs data frame
+business_cost$Sector <- c("Business")
+business_cost <- business_cost[,4:6]
+
+nonfarm_business_cost$Sector <- c("Nonfarm Business")
+nonfarm_business_cost <- nonfarm_business_cost[,4:6]
+
+durable_goods_cost$Sector <- c("Durable Goods")
+durable_goods_cost <- durable_goods_cost[,4:6]
+
+non_durable_goods_cost$Sector <- c("Non Durable Goods")
+non_durable_goods_cost <- non_durable_goods_cost[,4:6]
+
+manufacturing_cost$Sector <- c("Manufacturing")
+manufacturing_cost <- manufacturing_cost[,4:6]
+
+non_financial_corporations_cost$Sector <- c("Non Financial Corporations")
+non_financial_corporations_cost <- non_financial_corporations_cost[,4:6]
+
+costs <- rbind(business_cost,nonfarm_business_cost,durable_goods_cost,non_durable_goods_cost,manufacturing_cost,non_financial_corporations_cost)
+```
+
+
+
+```{r}
+# Create Time series plot of unit labor costs from 2018 to 2020
+ggplot(data = costs, aes(x = Label, y = Value,group = as.factor(Sector), color = Sector)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Labor Costs from 2018 to 2020") +
+  xlab("Time") + ylab("Unit Labor Cost")
+
+```
+
+We check unit labor cost from 2018-2020 and find the costs increase a lot in 2020 first quarter. Since three time series plots all show that there is a sudden change at 2020 first quarter, the pandemic could be the cause.  
+
+
+## D). Relationship between Producitivity and Work From Home employees
+```{r}
+WFH_business <- read.csv("./data/WFH_business.csv", header=T,stringsAsFactors = F)
+WFH_manufacturing <- read.csv("./data/WFH_manufacturing.csv", header=T,stringsAsFactors = F)
+WFH_durable_goods <- read.csv("./data/WFH_durable_goods.csv", header=T,stringsAsFactors = F)
+WFH_non_durable_goods <- read.csv("./data/WFH_non_durable_goods.csv", header=T,stringsAsFactors = F)
+WFH_non_financial <- read.csv("./data/WFH_non_financial.csv", header=T,stringsAsFactors = F)
+WFH_nonfarm <- read.csv("./data/WFH_nonfarm_business.csv", header=T,stringsAsFactors = F)
+
+```
+
+
+```{r}
+# Calculate work from home percentage by month.
+WFH_business$WFM_pct <- WFH_business$WFM/WFH_business$Total
+WFH_manufacturing$WFM_pct <- WFH_manufacturing$WFM/WFH_manufacturing$Total
+WFH_durable_goods$WFM_pct <- WFH_durable_goods$WFM/WFH_durable_goods$Total
+WFH_non_durable_goods$WFM_pct <- WFH_non_durable_goods$WFM/WFH_non_durable_goods$Total
+WFH_non_financial$WFM_pct <- WFH_non_financial$WFM/WFH_non_financial$Total
+WFH_nonfarm$WFM_pct <- WFH_nonfarm$WFM/WFH_nonfarm$Total
+WFH_employee <- rbind(WFH_business,WFH_durable_goods,WFH_manufacturing,WFH_non_durable_goods,WFH_non_financial,WFH_nonfarm)
+WFH_employee$Time <- as.Date(paste(WFH_employee$Time,"01"),"%Y %b %d")
+WFH_employee$Time <- substr(WFH_employee$Time,6,7)
+```
+
+
+
+```{r}
+# Time series plot of WFH employees percentage by month
+ggplot(data = WFH_employee, aes(x = Time, y = WFM_pct,group = as.factor(Sector), color = Sector)) + 
+  geom_line() + 
+  ggtitle("WFH employees in 2020") +
+  xlab("Month") + ylab("Percent of WFH Employees")
+```
+
+The graph represents the percentage of Work From Home Employees change due to the pandemic. There is a decreasing trend from May to October and lines slightly back up in November and December.  
+
+
+```{r}
+# Compute　data to quarterly based for WFH employees
+WFH_2020 <- WFH_employee %>% group_by(Sector,Label) %>%
+  summarize(mean_WFM = mean(WFM, na.rm = TRUE),mean_total = mean(Total, na.rm = TRUE), .groups = 'drop')
+WFH_2020 <- WFH_2020[-15, ]
+WFH_2020$WFM_qt_pct <- WFH_2020$mean_WFM/WFH_2020$mean_total
+WFH_2020 <- WFH_2020[,c("Sector","Label","WFM_qt_pct")]
+# Select 2020 data from producitivity
+qts <- WFH_business$Label
+prod_2020 <- productivity %>% filter(Label=="2020 Qtr2" | Label=="2020 Qtr3" | Label=="2020 Qtr4")
+prod_2020 <- prod_2020[order(prod_2020$Sector, prod_2020$Label),]
+# Column bind two dfs together
+WFH_prod_df <- cbind(WFH_2020,prod_2020)
+WFH_prod_df <- WFH_prod_df[,c("Sector","Label","WFM_qt_pct","Value")]
+```
+
+
+```{r}
+# Check scatterplot for the relationship between productivity and WFH employees 
+ggplot(data = WFH_prod_df, aes(x = WFM_qt_pct, y = Value)) + 
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE) + 
+  ggtitle("Scatterplot of Productivity and WFH employees") +
+  xlab("Percent of WFH Employees") + ylab("Productivity")
+
+```
+
+From the previous sections, we find that Work hours decrease and production increase in first and sector quarter of 2020. This means that the efficiency has increased, which might be caused by teleworking. Hence, we make a scatter plot to illustrate the relationship between Productivity and WFH employees. The scatterplot indicates that there is a positive correlation between two variables. As the percentage of WFH employees increase, the Productivity tends to increase.  
+
+
+### Part III: 
