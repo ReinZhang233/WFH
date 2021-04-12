@@ -329,6 +329,8 @@ From the previous sections, we find that Work hours decrease and production incr
 ## Part III: Employment and earnings
 
 ```{r}
+# select data from 2011 to 2021
+
 data_processing <- function(path) {
   df_raw <- read_excel(path, range = "A13:M24")
   df <- data.frame(matrix(ncol = 4, nrow = 0))
@@ -339,18 +341,19 @@ data_processing <- function(path) {
       df[k, 'Value'] = df_raw[i,j]
       df[k, 'Year'] = df_raw[i,1]
       df[k, 'Month'] = names(df_raw)[j]
-      df[k, 'Lable'] = paste(df_raw[i,1],  names(df_raw)[j])
+      df[k, 'Label'] = paste(df_raw[i,1],  names(df_raw)[j])
       k <- k+1
     }
   }
   df <- df[1:123,]
+  df$Label <- as.Date(paste(df$Label,"01"),"%Y %b %d")
   return(df)
 }
 ```
 
 ### Employee numbers
 
-```{r, echo=FALSE}
+```{r}
 # Import and transform employees data
 
 EmployeesTotalPrivate <- data_processing("data/EmployeesTotalPrivate.xlsx")
@@ -374,76 +377,43 @@ EmployeesSPTTUUtilities <- data_processing("data/EmployeesSPTTUUtilities.xlsx")
 EmployeesSPTTUWholesale <- data_processing("data/EmployeesSPTTUWholesale.xlsx")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # assign sectors
 
-EmployeesTotalPrivate$Sector <- c("Total Private")
-EmployeesTotalPrivate$SubSector <- c("Total Private")
 EmployeesTotalPrivate$Industry <- c("Total Private")
-EmployeesGoodsProducing$Sector <- c("Goods-producing")
-EmployeesGoodsProducing$SubSector <- c("Goods-producing")
 EmployeesGoodsProducing$Industry <- c("Goods-producing")
-EmployeesGPMiningLogging$Sector <- c("Goods-producing")
-EmployeesGPMiningLogging$SubSector <- c("Mining and Logging")
 EmployeesGPMiningLogging$Industry <- c("Mining and Logging")
-EmployeesGPConstruction$Sector <- c("Goods-producing")
-EmployeesGPConstruction$SubSector <- c("Construction")
 EmployeesGPConstruction$Industry <- c("Construction")
-EmployeesGPManufacturing$Sector <- c("Goods-producing")
-EmployeesGPManufacturing$SubSector <- c("Manufacturing")
 EmployeesGPManufacturing$Industry <- c("Manufacturing")
-EmployeesGPMDurableGoods$Sector <- c("Goods-producing")
-EmployeesGPMDurableGoods$SubSector <- c("Manufacturing")
 EmployeesGPMDurableGoods$Industry <- c("Durable Goods")
-EmployeesGPMNondurableGoods$Sector <- c("Goods-producing")
-EmployeesGPMNondurableGoods$SubSector <- c("Manufacturing")
 EmployeesGPMNondurableGoods$Industry <- c("Nondurable Goods")
-EmployeesServiceProviding$Sector <- c("Private Service Providing")
-EmployeesServiceProviding$SubSector <- c("Private Service Providing")
 EmployeesServiceProviding$Industry <- c("Private Service Providing")
-EmployeesSPEducationHealthServices$Sector <- c("Private Service Providing")
-EmployeesSPEducationHealthServices$SubSector <- c("Education and Health Services")
 EmployeesSPEducationHealthServices$Industry <- c("Education and Health Services")
-EmployeesSPFinancialActivities$Sector <- c("Private Service Providing")
-EmployeesSPFinancialActivities$SubSector <- c("Financial Activities")
 EmployeesSPFinancialActivities$Industry <- c("Financial Activities")
-EmployeesSPInformation$Sector <- c("Private Service Providing")
-EmployeesSPInformation$SubSector <- c("Information")
 EmployeesSPInformation$Industry <- c("Information")
-EmployeesSPLeisureHospitality$Sector <- c("Private Service Providing")
-EmployeesSPLeisureHospitality$SubSector <- c("Leisure and Hospitality")
 EmployeesSPLeisureHospitality$Industry <- c("Leisure and Hospitality")
-EmployeesSPOtherServices$Sector <- c("Private Service Providing")
-EmployeesSPOtherServices$SubSector <- c("Other Services")
 EmployeesSPOtherServices$Industry <- c("Other Services")
-EmployeesSPProfessionalBusinessService$Sector <- c("Private Service Providing")
-EmployeesSPProfessionalBusinessService$SubSector <- c("Professional and Business Service")
 EmployeesSPProfessionalBusinessService$Industry <- c("Professional and Business Service")
-EmployeesSPTradeTransportationUtilities$Sector <- c("Private Service Providing")
-EmployeesSPTradeTransportationUtilities$SubSector <- c("Trade Transportation and Utilities")
 EmployeesSPTradeTransportationUtilities$Industry <- c("Trade Transportation and Utilities")
-EmployeesSPTTURetail$Sector <- c("Private Service Providing")
-EmployeesSPTTURetail$SubSector <- c("Trade Transportation and Utilities")
 EmployeesSPTTURetail$Industry <- c("Retail Trade")
-EmployeesSPTTUTransportationWarehousing$Sector <- c("Private Service Providing")
-EmployeesSPTTUTransportationWarehousing$SubSector <- c("Trade Transportation and Utilities")
 EmployeesSPTTUTransportationWarehousing$Industry <- c("Transportation and Warehousing")
-EmployeesSPTTUUtilities$Sector <- c("Private Service Providing")
-EmployeesSPTTUUtilities$SubSector <- c("Trade Transportation and Utilities")
 EmployeesSPTTUUtilities$Industry <- c("Utilities")
-EmployeesSPTTUWholesale$Sector <- c("Private Service Providing")
-EmployeesSPTTUWholesale$SubSector <- c("Trade Transportation and Utilities")
 EmployeesSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # combine tables
-employees_num <- rbind(EmployeesTotalPrivate, EmployeesGoodsProducing, EmployeesGPMiningLogging, EmployeesGPConstruction, EmployeesGPManufacturing, EmployeesGPMDurableGoods, EmployeesGPMNondurableGoods, EmployeesServiceProviding, EmployeesSPEducationHealthServices, EmployeesSPFinancialActivities, EmployeesSPInformation, EmployeesSPLeisureHospitality, EmployeesSPOtherServices, EmployeesSPProfessionalBusinessService, EmployeesSPTradeTransportationUtilities, EmployeesSPTTURetail, EmployeesSPTTUTransportationWarehousing, EmployeesSPTTUUtilities, EmployeesSPTTUWholesale)
+employees_total <- rbind(EmployeesGoodsProducing,                EmployeesServiceProviding)
+employees_gp <- rbind(EmployeesGPMiningLogging, EmployeesGPConstruction,
+                      EmployeesGPManufacturing)
+employees_gp_manu <- rbind(EmployeesGPMDurableGoods, EmployeesGPMNondurableGoods)
+employees_sp <- rbind(EmployeesSPEducationHealthServices, EmployeesSPFinancialActivities, EmployeesSPInformation, EmployeesSPLeisureHospitality, EmployeesSPOtherServices, EmployeesSPProfessionalBusinessService, EmployeesSPTradeTransportationUtilities)
+employees_sp_ttu <- rbind(EmployeesSPTTURetail, EmployeesSPTTUTransportationWarehousing, EmployeesSPTTUUtilities, EmployeesSPTTUWholesale)
 ```
 
 ### Average weekly working hours and overtime hours
 #### weekly working hours
-```{r, echo=FALSE}
+```{r}
 # Import and transform working hour data
 
 WklyHrTotalPrivate <- data_processing("data/WklyHrTotalPrivate.xlsx")
@@ -467,76 +437,43 @@ WklyHrSPTTUUtilities <- data_processing("data/WklyHrSPTTUUtilities.xlsx")
 WklyHrSPTTUWholesale <- data_processing("data/WklyHrSPTTUWholesale.xlsx")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # assign sectors
 
-WklyHrTotalPrivate$Sector <- c("Total Private")
-WklyHrTotalPrivate$SubSector <- c("Total Private")
 WklyHrTotalPrivate$Industry <- c("Total Private")
-WklyHrGoodsProducing$Sector <- c("Goods-producing")
-WklyHrGoodsProducing$SubSector <- c("Goods-producing")
 WklyHrGoodsProducing$Industry <- c("Goods-producing")
-WklyHrGPMiningLogging$Sector <- c("Goods-producing")
-WklyHrGPMiningLogging$SubSector <- c("Mining and Logging")
 WklyHrGPMiningLogging$Industry <- c("Mining and Logging")
-WklyHrGPConstruction$Sector <- c("Goods-producing")
-WklyHrGPConstruction$SubSector <- c("Construction")
 WklyHrGPConstruction$Industry <- c("Construction")
-WklyHrGPManufacturing$Sector <- c("Goods-producing")
-WklyHrGPManufacturing$SubSector <- c("Manufacturing")
 WklyHrGPManufacturing$Industry <- c("Manufacturing")
-WklyHrGPMDurableGoods$Sector <- c("Goods-producing")
-WklyHrGPMDurableGoods$SubSector <- c("Manufacturing")
 WklyHrGPMDurableGoods$Industry <- c("Durable Goods")
-WklyHrGPMNondurableGoods$Sector <- c("Goods-producing")
-WklyHrGPMNondurableGoods$SubSector <- c("Manufacturing")
 WklyHrGPMNondurableGoods$Industry <- c("Nondurable Goods")
-WklyHrServiceProviding$Sector <- c("Private Service Providing")
-WklyHrServiceProviding$SubSector <- c("Private Service Providing")
 WklyHrServiceProviding$Industry <- c("Private Service Providing")
-WklyHrSPEducationHealthServices$Sector <- c("Private Service Providing")
-WklyHrSPEducationHealthServices$SubSector <- c("Education and Health Services")
 WklyHrSPEducationHealthServices$Industry <- c("Education and Health Services")
-WklyHrSPFinancialActivities$Sector <- c("Private Service Providing")
-WklyHrSPFinancialActivities$SubSector <- c("Financial Activities")
 WklyHrSPFinancialActivities$Industry <- c("Financial Activities")
-WklyHrSPInformation$Sector <- c("Private Service Providing")
-WklyHrSPInformation$SubSector <- c("Information")
 WklyHrSPInformation$Industry <- c("Information")
-WklyHrSPLeisureHospitality$Sector <- c("Private Service Providing")
-WklyHrSPLeisureHospitality$SubSector <- c("Leisure and Hospitality")
 WklyHrSPLeisureHospitality$Industry <- c("Leisure and Hospitality")
-WklyHrSPOtherServices$Sector <- c("Private Service Providing")
-WklyHrSPOtherServices$SubSector <- c("Other Services")
 WklyHrSPOtherServices$Industry <- c("Other Services")
-WklyHrSPProfessionalBusinessService$Sector <- c("Private Service Providing")
-WklyHrSPProfessionalBusinessService$SubSector <- c("Professional and Business Service")
 WklyHrSPProfessionalBusinessService$Industry <- c("Professional and Business Service")
-WklyHrSPTradeTransportationUtilities$Sector <- c("Private Service Providing")
-WklyHrSPTradeTransportationUtilities$SubSector <- c("Trade Transportation and Utilities")
 WklyHrSPTradeTransportationUtilities$Industry <- c("Trade Transportation and Utilities")
-WklyHrSPTTURetail$Sector <- c("Private Service Providing")
-WklyHrSPTTURetail$SubSector <- c("Trade Transportation and Utilities")
 WklyHrSPTTURetail$Industry <- c("Retail Trade")
-WklyHrSPTTUTransportationWarehousing$Sector <- c("Private Service Providing")
-WklyHrSPTTUTransportationWarehousing$SubSector <- c("Trade Transportation and Utilities")
 WklyHrSPTTUTransportationWarehousing$Industry <- c("Transportation and Warehousing")
-WklyHrSPTTUUtilities$Sector <- c("Private Service Providing")
-WklyHrSPTTUUtilities$SubSector <- c("Trade Transportation and Utilities")
 WklyHrSPTTUUtilities$Industry <- c("Utilities")
-WklyHrSPTTUWholesale$Sector <- c("Private Service Providing")
-WklyHrSPTTUWholesale$SubSector <- c("Trade Transportation and Utilities")
 WklyHrSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # combine tables
-WklyHr <- rbind(WklyHrTotalPrivate, WklyHrGoodsProducing, WklyHrGPMiningLogging, WklyHrGPConstruction, WklyHrGPManufacturing, WklyHrGPMDurableGoods, WklyHrGPMNondurableGoods, WklyHrServiceProviding, WklyHrSPEducationHealthServices, WklyHrSPFinancialActivities, WklyHrSPInformation, WklyHrSPLeisureHospitality, WklyHrSPOtherServices, WklyHrSPProfessionalBusinessService, WklyHrSPTradeTransportationUtilities, WklyHrSPTTURetail, WklyHrSPTTUTransportationWarehousing, WklyHrSPTTUUtilities, WklyHrSPTTUWholesale)
+WklyHr_total <- rbind(WklyHrGoodsProducing, WklyHrServiceProviding)
+WklyHr_gp <- rbind(WklyHrGPMiningLogging, WklyHrGPConstruction,
+                      WklyHrGPManufacturing)
+WklyHr_gp_manu <- rbind(WklyHrGPMDurableGoods, WklyHrGPMNondurableGoods)
+WklyHr_sp <- rbind(WklyHrSPEducationHealthServices, WklyHrSPFinancialActivities, WklyHrSPInformation, WklyHrSPLeisureHospitality, WklyHrSPOtherServices, WklyHrSPProfessionalBusinessService, WklyHrSPTradeTransportationUtilities)
+WklyHr_sp_ttu <- rbind(WklyHrSPTTURetail, WklyHrSPTTUTransportationWarehousing, WklyHrSPTTUUtilities, WklyHrSPTTUWholesale)
 ```
 
 #### Weekly overtime hours
 
-```{r, echo=FALSE}
+```{r}
 # Import and transform overtime data
 
 WklyOvertimeGPManufacturing <- data_processing("data/WklyOvertimeManufacturing.xlsx")
@@ -545,23 +482,18 @@ WklyOvertimeGPMNondurableGoods <- data_processing("data/WklyOvertimeMNondurableG
 
 # assign sectors
 
-WklyOvertimeGPManufacturing$Sector <- c("Goods-producing")
-WklyOvertimeGPManufacturing$SubSector <- c("Manufacturing")
 WklyOvertimeGPManufacturing$Industry <- c("Manufacturing")
-WklyOvertimeGPMDurableGoods$Sector <- c("Goods-producing")
-WklyOvertimeGPMDurableGoods$SubSector <- c("Manufacturing")
 WklyOvertimeGPMDurableGoods$Industry <- c("Durable Goods")
-WklyOvertimeGPMNondurableGoods$Sector <- c("Goods-producing")
-WklyOvertimeGPMNondurableGoods$SubSector <- c("Manufacturing")
 WklyOvertimeGPMNondurableGoods$Industry <- c("Nondurable Goods")
 
 # combine tables
-WklyOvertime <- rbind(WklyOvertimeGPManufacturing, WklyOvertimeGPMDurableGoods, WklyOvertimeGPMNondurableGoods)
+WklyOvertime <- rbind(WklyOvertimeGPMDurableGoods,
+                      WklyOvertimeGPMNondurableGoods)
 ```
 
 ### Average hourly earnings
 
-```{r, echo=FALSE}
+```{r}
 # Import and transform hourly earnings data
 
 HrlyEarningsTotalPrivate <- data_processing("data/HrlyEarningsTotalPrivate.xlsx")
@@ -585,69 +517,49 @@ HrlyEarningsSPTTUUtilities <- data_processing("data/HrlyEarningsSPTTUUtilities.x
 HrlyEarningsSPTTUWholesale <- data_processing("data/HrlyEarningsSPTTUWholesale.xlsx")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # assign sectors
 
-HrlyEarningsTotalPrivate$Sector <- c("Total Private")
-HrlyEarningsTotalPrivate$SubSector <- c("Total Private")
 HrlyEarningsTotalPrivate$Industry <- c("Total Private")
-HrlyEarningsGoodsProducing$Sector <- c("Goods-producing")
-HrlyEarningsGoodsProducing$SubSector <- c("Goods-producing")
 HrlyEarningsGoodsProducing$Industry <- c("Goods-producing")
-HrlyEarningsGPMiningLogging$Sector <- c("Goods-producing")
-HrlyEarningsGPMiningLogging$SubSector <- c("Mining and Logging")
 HrlyEarningsGPMiningLogging$Industry <- c("Mining and Logging")
-HrlyEarningsGPConstruction$Sector <- c("Goods-producing")
-HrlyEarningsGPConstruction$SubSector <- c("Construction")
 HrlyEarningsGPConstruction$Industry <- c("Construction")
-HrlyEarningsGPManufacturing$Sector <- c("Goods-producing")
-HrlyEarningsGPManufacturing$SubSector <- c("Manufacturing")
 HrlyEarningsGPManufacturing$Industry <- c("Manufacturing")
-HrlyEarningsGPMDurableGoods$Sector <- c("Goods-producing")
-HrlyEarningsGPMDurableGoods$SubSector <- c("Manufacturing")
 HrlyEarningsGPMDurableGoods$Industry <- c("Durable Goods")
-HrlyEarningsGPMNondurableGoods$Sector <- c("Goods-producing")
-HrlyEarningsGPMNondurableGoods$SubSector <- c("Manufacturing")
 HrlyEarningsGPMNondurableGoods$Industry <- c("Nondurable Goods")
-HrlyEarningsServiceProviding$Sector <- c("Private Service Providing")
-HrlyEarningsServiceProviding$SubSector <- c("Private Service Providing")
 HrlyEarningsServiceProviding$Industry <- c("Private Service Providing")
-HrlyEarningsSPEducationHealthServices$Sector <- c("Private Service Providing")
-HrlyEarningsSPEducationHealthServices$SubSector <- c("Education and Health Services")
 HrlyEarningsSPEducationHealthServices$Industry <- c("Education and Health Services")
-HrlyEarningsSPFinancialActivities$Sector <- c("Private Service Providing")
-HrlyEarningsSPFinancialActivities$SubSector <- c("Financial Activities")
 HrlyEarningsSPFinancialActivities$Industry <- c("Financial Activities")
-HrlyEarningsSPInformation$Sector <- c("Private Service Providing")
-HrlyEarningsSPInformation$SubSector <- c("Information")
 HrlyEarningsSPInformation$Industry <- c("Information")
-HrlyEarningsSPLeisureHospitality$Sector <- c("Private Service Providing")
-HrlyEarningsSPLeisureHospitality$SubSector <- c("Leisure and Hospitality")
 HrlyEarningsSPLeisureHospitality$Industry <- c("Leisure and Hospitality")
-HrlyEarningsSPOtherServices$Sector <- c("Private Service Providing")
-HrlyEarningsSPOtherServices$SubSector <- c("Other Services")
 HrlyEarningsSPOtherServices$Industry <- c("Other Services")
-HrlyEarningsSPProfessionalBusinessService$Sector <- c("Private Service Providing")
-HrlyEarningsSPProfessionalBusinessService$SubSector <- c("Professional and Business Service")
 HrlyEarningsSPProfessionalBusinessService$Industry <- c("Professional and Business Service")
-HrlyEarningsSPTradeTransportationUtilities$Sector <- c("Private Service Providing")
-HrlyEarningsSPTradeTransportationUtilities$SubSector <- c("Trade Transportation and Utilities")
 HrlyEarningsSPTradeTransportationUtilities$Industry <- c("Trade Transportation and Utilities")
-HrlyEarningsSPTTURetail$Sector <- c("Private Service Providing")
-HrlyEarningsSPTTURetail$SubSector <- c("Trade Transportation and Utilities")
 HrlyEarningsSPTTURetail$Industry <- c("Retail Trade")
-HrlyEarningsSPTTUTransportationWarehousing$Sector <- c("Private Service Providing")
-HrlyEarningsSPTTUTransportationWarehousing$SubSector <- c("Trade Transportation and Utilities")
 HrlyEarningsSPTTUTransportationWarehousing$Industry <- c("Transportation and Warehousing")
-HrlyEarningsSPTTUUtilities$Sector <- c("Private Service Providing")
-HrlyEarningsSPTTUUtilities$SubSector <- c("Trade Transportation and Utilities")
 HrlyEarningsSPTTUUtilities$Industry <- c("Utilities")
-HrlyEarningsSPTTUWholesale$Sector <- c("Private Service Providing")
-HrlyEarningsSPTTUWholesale$SubSector <- c("Trade Transportation and Utilities")
 HrlyEarningsSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r, echo=FALSE}
+```{r}
 # combine tables
-HrlyEarnings <- rbind(HrlyEarningsTotalPrivate, HrlyEarningsGoodsProducing, HrlyEarningsGPMiningLogging, HrlyEarningsGPConstruction, HrlyEarningsGPManufacturing, HrlyEarningsGPMDurableGoods, HrlyEarningsGPMNondurableGoods, HrlyEarningsServiceProviding, HrlyEarningsSPEducationHealthServices, HrlyEarningsSPFinancialActivities, HrlyEarningsSPInformation, HrlyEarningsSPLeisureHospitality, HrlyEarningsSPOtherServices, HrlyEarningsSPProfessionalBusinessService, HrlyEarningsSPTradeTransportationUtilities, HrlyEarningsSPTTURetail, HrlyEarningsSPTTUTransportationWarehousing, HrlyEarningsSPTTUUtilities, HrlyEarningsSPTTUWholesale)
+HrlyEarnings_total <- rbind(HrlyEarningsGoodsProducing,
+                            HrlyEarningsServiceProviding)
+HrlyEarnings_gp <- rbind(HrlyEarningsGPMiningLogging,
+                         HrlyEarningsGPConstruction,
+                         HrlyEarningsGPManufacturing)
+HrlyEarnings_gp_manu <- rbind(HrlyEarningsGPMDurableGoods,
+                              HrlyEarningsGPMNondurableGoods)
+HrlyEarnings_sp <- rbind(HrlyEarningsSPEducationHealthServices,
+                         HrlyEarningsSPFinancialActivities,
+                         HrlyEarningsSPInformation,
+                         HrlyEarningsSPLeisureHospitality,
+                         HrlyEarningsSPOtherServices,
+                         HrlyEarningsSPProfessionalBusinessService,
+                         HrlyEarningsSPTradeTransportationUtilities)
+HrlyEarnings_sp_ttu <- rbind(HrlyEarningsSPTTURetail,
+                             HrlyEarningsSPTTUTransportationWarehousing,
+                             HrlyEarningsSPTTUUtilities,
+                             HrlyEarningsSPTTUWholesale)
 ```
+
