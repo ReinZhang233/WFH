@@ -1,5 +1,6 @@
 // Create svg and initial bars
 
+
   var w = 500;
   var h = 400;
   var margin = {top: 80, right: 0, bottom: 25,
@@ -74,7 +75,7 @@
      .attr("x", 5)
      .attr("y", 20)
      .attr("font-size", "24px")
-     .text("2020 WFH employees")
+     .text("2020 WFH employees");
    
 
 
@@ -102,7 +103,7 @@
           .attr("x", (d, i) => xScale(i))
           .attr("y", d => yScale(d))
           .attr("width", xScale.bandwidth())
-          .attr("height", d => innerHeight - yScale(d))
+          .attr("height", d => innerHeight - yScale(d));
 	
 
       bars.exit().remove();
@@ -139,7 +140,7 @@
 		bardata = [42416,38646,32890,30650,28567,27450,28311,30539];}
 	    else if (paraID == "nonFarm") {
 		bardata = [48548,44499,38067,35716,33404,31870,32639,35394];}
-	    else {bardata = [6132,5853,5177,5066,4837,4420,4328,4855];};
+	    else {bardata = [6132,5853,5177,5066,4837,4420,4328,4855];}
 
             update(bardata);
 

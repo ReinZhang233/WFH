@@ -4,6 +4,8 @@ data-description
 limitations
 data-transformation
 missing-values
+missing-data-in-wfh-employees-population-by-occupation-sectors
+missing-data-in-productivity-features
 results
 part-i-employees-before-and-after-covid-19
 part-ii-productivity
@@ -11,6 +13,11 @@ labor-productivity
 work-hours
 unit-labor-cost
 relationship-between-producitivity-and-work-from-home-employees
-part-iii
+part-iii-employment-and-earnings
+employee-numbers
+average-weekly-working-hours-and-overtime-hours
+weekly-working-hours
+weekly-overtime-hours
+average-hourly-earnings
 interactive-component
 conclusion

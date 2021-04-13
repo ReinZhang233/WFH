@@ -76,7 +76,10 @@
 <li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#limitations"><i class="fa fa-check"></i><b>2.2</b> Limitations</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#missing-data-in-wfh-employees-population-by-occupation-sectors"><i class="fa fa-check"></i><b>4.1</b> Missing data in WFH employees’ population by occupation sectors</a></li>
+<li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#missing-data-in-productivity-features"><i class="fa fa-check"></i><b>4.2</b> Missing data in Productivity features</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
 <li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#part-i-employees-before-and-after-covid-19"><i class="fa fa-check"></i><b>5.1</b> Part I: Employees before and after COVID-19</a></li>
 <li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#part-ii-productivity"><i class="fa fa-check"></i><b>5.2</b> Part II: Productivity</a><ul>
@@ -85,7 +88,11 @@
 <li class="chapter" data-level="5.2.3" data-path="results.html"><a href="results.html#unit-labor-cost"><i class="fa fa-check"></i><b>5.2.3</b> Unit labor cost</a></li>
 <li class="chapter" data-level="5.2.4" data-path="results.html"><a href="results.html#relationship-between-producitivity-and-work-from-home-employees"><i class="fa fa-check"></i><b>5.2.4</b> Relationship between Producitivity and Work From Home employees</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#part-iii"><i class="fa fa-check"></i><b>5.3</b> Part III:</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#part-iii-employment-and-earnings"><i class="fa fa-check"></i><b>5.3</b> Part III: Employment and earnings</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="results.html"><a href="results.html#employee-numbers"><i class="fa fa-check"></i><b>5.3.1</b> Employee numbers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="results.html"><a href="results.html#average-weekly-working-hours-and-overtime-hours"><i class="fa fa-check"></i><b>5.3.2</b> Average weekly working hours and overtime hours</a></li>
+<li class="chapter" data-level="5.3.3" data-path="results.html"><a href="results.html#average-hourly-earnings"><i class="fa fa-check"></i><b>5.3.3</b> Average hourly earnings</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
@@ -110,17 +117,22 @@
             <section class="normal" id="section-">
 <div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
-<pre><code>##         Year Construction         Farm Installation Mgmt_Bus_Fin Office_Admin 
-##            0            0           14            1            0            0 
-##   Production Professional        Sales      Service    Transport     WFH_only 
-##            0            0            0            0            0            0</code></pre>
+<div id="missing-data-in-wfh-employees-population-by-occupation-sectors" class="section level2">
+<h2><span class="header-section-number">4.1</span> Missing data in WFH employees’ population by occupation sectors</h2>
+<p>Below is a table that summarized the missing data in WFH employees population by sectors over time.</p>
+<pre><code>##         Year Construction         Farm Installation Mgmt_Bus_Fin Office_Admin   Production Professional 
+##            0            0           14            1            0            0            0            0 
+##        Sales      Service    Transport     WFH_only 
+##            0            0            0            0</code></pre>
 <pre><code>## NOTE: In the following pairs of variables, the missingness pattern of the second is a subset of the first.
 ##  Please verify whether they are in fact logically distinct variables.
 ##      [,1]   [,2]          
 ## [1,] &quot;Farm&quot; &quot;Installation&quot;</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>We can see that for the data set that describes WFH population before COVID, occupation sectors such as Farming, Fishing and Forestry contains lots of missing summary data. That is likely due to the fact that workers from Farming Sectors are likely working from “home” and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.</p>
-<p>Productivity part missing value</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>We can see that for the data set that describes WFH population before COVID, occupation sectors such as ‘Farming, Fishing and Forestry’ contains lots of missing summary data. That is likely due to the fact that workers from ‘Farming’ Sectors are likely working from “home” and the standard of telework is not clearly defined for them. Also, it is noticed on the documentation of the data tables that effective with January 2011 data, occupations reflect the introduction of the 2010 Census occupational classification system. Data for 2011 and later are not strictly comparable with earlier years.</p>
+</div>
+<div id="missing-data-in-productivity-features" class="section level2">
+<h2><span class="header-section-number">4.2</span> Missing data in Productivity features</h2>
 <pre><code>##      Series.ID Year Period     Label Value
 ## 8  PRS88003092 2019    Q04 2019 Qtr4   1.4
 ## 9  PRS88003092 2020    Q01 2020 Qtr1   0.3
@@ -131,9 +143,10 @@
 ## 10 PRS88003092 2020    Q02 2020 Qtr2   4.8
 ## 11 PRS88003092 2020    Q03 2020 Qtr3  -0.6
 ## 12 PRS88003092 2020    Q04 2020 Qtr4    NA</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
 <p>For non-financial-corporation, there are only 11 rows. Productivity for the fourth quarter of 2020 is missing. However, this does not affect the analysis for productivity when plotting the time series plot. For the scatterplot, we will trimmed the WFM data to make sure two data frames are matched with no missing values. (Trimmed data is included in data transformation part.)</p>
 
+</div>
 </div>
             </section>
 

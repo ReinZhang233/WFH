@@ -76,7 +76,10 @@
 <li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#limitations"><i class="fa fa-check"></i><b>2.2</b> Limitations</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#missing-data-in-wfh-employees-population-by-occupation-sectors"><i class="fa fa-check"></i><b>4.1</b> Missing data in WFH employees’ population by occupation sectors</a></li>
+<li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#missing-data-in-productivity-features"><i class="fa fa-check"></i><b>4.2</b> Missing data in Productivity features</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
 <li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#part-i-employees-before-and-after-covid-19"><i class="fa fa-check"></i><b>5.1</b> Part I: Employees before and after COVID-19</a></li>
 <li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#part-ii-productivity"><i class="fa fa-check"></i><b>5.2</b> Part II: Productivity</a><ul>
@@ -85,7 +88,11 @@
 <li class="chapter" data-level="5.2.3" data-path="results.html"><a href="results.html#unit-labor-cost"><i class="fa fa-check"></i><b>5.2.3</b> Unit labor cost</a></li>
 <li class="chapter" data-level="5.2.4" data-path="results.html"><a href="results.html#relationship-between-producitivity-and-work-from-home-employees"><i class="fa fa-check"></i><b>5.2.4</b> Relationship between Producitivity and Work From Home employees</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#part-iii"><i class="fa fa-check"></i><b>5.3</b> Part III:</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#part-iii-employment-and-earnings"><i class="fa fa-check"></i><b>5.3</b> Part III: Employment and earnings</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="results.html"><a href="results.html#employee-numbers"><i class="fa fa-check"></i><b>5.3.1</b> Employee numbers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="results.html"><a href="results.html#average-weekly-working-hours-and-overtime-hours"><i class="fa fa-check"></i><b>5.3.2</b> Average weekly working hours and overtime hours</a></li>
+<li class="chapter" data-level="5.3.3" data-path="results.html"><a href="results.html#average-hourly-earnings"><i class="fa fa-check"></i><b>5.3.3</b> Average hourly earnings</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
@@ -112,41 +119,57 @@
 <h1><span class="header-section-number">Chapter 5</span> Results</h1>
 <div id="part-i-employees-before-and-after-covid-19" class="section level2">
 <h2><span class="header-section-number">5.1</span> Part I: Employees before and after COVID-19</h2>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <p>Overall, the general population of telework employees tend to increase over the last 10 years. Among all the sectors being investigated, Service and Management,Business and Financial Sector seemed contribute to the increase in work-from-home employees’ population the most.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <p>The plot above shows the fluctuation of growth rate with WFH population within selected Sectors over years. We can see that some Sectors, such as Construction, Production, Office and Administration, Services and Transportation seem to have high volatility in the changes of WFH population percentages, with fluctuation ranging between -0.5% to 1%. Management, Business, Financial and Professional Sectors seem to have less fluctuation in the change of rate.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>In general, we can see that the increase of telework population due to covid has a greater portion among the number of all employed workers starting from May 2020 and its proportion started to decrease as time pass by. Even though we could not get the data before May 2020, this trend may suggest that at the beginning of 2020, when COVID had just begun, the ratio of covid-lead WFH population over the total employed population would be even higher. Another trend we can see from the graph is that the total employed workers’ number is gradually increasing.</p>
 </div>
 <div id="part-ii-productivity" class="section level2">
 <h2><span class="header-section-number">5.2</span> Part II: Productivity</h2>
 <div id="labor-productivity" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Labor Productivity</h3>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-99-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
 <p>From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might caused by the increasing number of Work From Home employees.</p>
 </div>
 <div id="work-hours" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Work hours</h3>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 <p>Then we check work hours from 2018-2020. Work hours have apparent decrease for all sectors in the first quarter of 2020. This shows an opposite trend with productivity.</p>
 </div>
 <div id="unit-labor-cost" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Unit labor cost</h3>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>We check unit labor cost from 2018-2020 and find the costs increase a lot in 2020 first quarter. Since three time series plots all show that there is a sudden change at 2020 first quarter, the pandemic could be the cause.</p>
 </div>
 <div id="relationship-between-producitivity-and-work-from-home-employees" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Relationship between Producitivity and Work From Home employees</h3>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p>The graph represents the percentage of Work From Home Employees change due to the pandemic. There is a decreasing trend from May to October and lines slightly back up in November and December.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>From the previous sections, we find that Work hours decrease and production increase in first and sector quarter of 2020. This means that the efficiency has increased, which might be caused by teleworking. Hence, we make a scatter plot to illustrate the relationship between Productivity and WFH employees. The scatterplot indicates that there is a positive correlation between two variables. As the percentage of WFH employees increase, the Productivity tends to increase.</p>
 </div>
 </div>
-<div id="part-iii" class="section level2">
-<h2><span class="header-section-number">5.3</span> Part III:</h2>
+<div id="part-iii-employment-and-earnings" class="section level2">
+<h2><span class="header-section-number">5.3</span> Part III: Employment and earnings</h2>
+<div id="employee-numbers" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Employee numbers</h3>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-115-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-115-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-115-3.png" width="672" /></p>
+</div>
+<div id="average-weekly-working-hours-and-overtime-hours" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Average weekly working hours and overtime hours</h3>
+<div id="weekly-working-hours" class="section level4">
+<h4><span class="header-section-number">5.3.2.1</span> weekly working hours</h4>
+</div>
+<div id="weekly-overtime-hours" class="section level4">
+<h4><span class="header-section-number">5.3.2.2</span> Weekly overtime hours</h4>
+</div>
+</div>
+<div id="average-hourly-earnings" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> Average hourly earnings</h3>
 
+</div>
 </div>
 </div>
             </section>
