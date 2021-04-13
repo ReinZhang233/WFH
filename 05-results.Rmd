@@ -152,7 +152,7 @@ ggplot(productivity,aes(x = Label, y = Value,group = as.factor(Sector)))+
   theme(plot.title = element_text(size = 20, face = "bold"), axis.text.x=element_text(angle = 90))
 ```
 
-From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might caused by the increasing number of Work From Home employees.  
+From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might be caused by the increasing number of Work From Home employees.  
 
 
  
@@ -413,49 +413,51 @@ employees_sp_ttu <- rbind(EmployeesSPTTURetail, EmployeesSPTTUTransportationWare
 
 ```{r, echo=FALSE}
 library(gridExtra)
-p1 <- ggplot(data = EmployeesTotalPrivate, aes(x = Label, y = Value,)) + 
+ggplot(data = EmployeesTotalPrivate, aes(x = Label, y = Value,)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021") +
   xlab("Time") + ylab("Employees (in thousands)")
 
-p2 <- ggplot(data = employees_total, aes(x = Label, y = Value,
+ggplot(data = employees_total, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021 by main sectors") +
   xlab("Time") + ylab("Employees (in thousands)")
 
-grid.arrange(p1, p2, ncol = 2)
+#grid.arrange(p1, p2, ncol = 2)
 
-p3 <- ggplot(data = employees_gp, aes(x = Label, y = Value,
+ggplot(data = employees_gp, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021 in Goods-producing sector") +
   xlab("Time") + ylab("Employees (in thousands)")
-p4 <- ggplot(data = employees_sp, aes(x = Label, y = Value,
+ggplot(data = employees_sp, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021 in Private Service Providing sector") +
   xlab("Time") + ylab("Employees (in thousands)")
-grid.arrange(p3, p4, ncol = 2)
+#grid.arrange(p3, p4, ncol = 2)
 
-p5 <- ggplot(data = employees_gp_manu, aes(x = Label, y = Value,
+ggplot(data = employees_gp_manu, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021 in Manufacturing industry") +
   xlab("Time") + ylab("Employees (in thousands)")
-p6 <- ggplot(data = employees_sp_ttu, aes(x = Label, y = Value,
+ggplot(data = employees_sp_ttu, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Employment from 2011 to 2021 in Trade Transportation and Utilities industry") +
   xlab("Time") + ylab("Employees (in thousands)")
-grid.arrange(p5, p6, ncol = 2)
+#grid.arrange(p5, p6, ncol = 2)
 ```
+
+From the time series plot for different sectors and sub-sectors, we can see that for all the industries, there was an abrupt drop in employees number at the beginning of 2020, around the time of March when the pandemic started spreading across the US. The only industry that did not fluctuate much is Utilities. This shows that this industry provides stable jobs.
 
 ### Average weekly working hours and overtime hours
 #### weekly working hours
