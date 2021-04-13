@@ -328,7 +328,7 @@ From the previous sections, we find that Work hours decrease and production incr
 
 ## Part III: Employment and earnings
 
-```{r}
+```{r,echo=FALSE}
 # select data from 2011 to 2021
 
 data_processing <- function(path) {
@@ -353,7 +353,7 @@ data_processing <- function(path) {
 
 ### Employee numbers
 
-```{r}
+```{r,echo=FALSE}
 # Import and transform employees data
 
 EmployeesTotalPrivate <- data_processing("data/EmployeesTotalPrivate.xlsx")
@@ -377,7 +377,7 @@ EmployeesSPTTUUtilities <- data_processing("data/EmployeesSPTTUUtilities.xlsx")
 EmployeesSPTTUWholesale <- data_processing("data/EmployeesSPTTUWholesale.xlsx")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # assign sectors
 
 EmployeesTotalPrivate$Industry <- c("Total Private")
@@ -401,7 +401,7 @@ EmployeesSPTTUUtilities$Industry <- c("Utilities")
 EmployeesSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # combine tables
 employees_total <- rbind(EmployeesGoodsProducing,                EmployeesServiceProviding)
 employees_gp <- rbind(EmployeesGPMiningLogging, EmployeesGPConstruction,
@@ -459,7 +459,7 @@ grid.arrange(p5, p6, ncol = 2)
 
 ### Average weekly working hours and overtime hours
 #### weekly working hours
-```{r}
+```{r,echo=FALSE}
 # Import and transform working hour data
 
 WklyHrTotalPrivate <- data_processing("data/WklyHrTotalPrivate.xlsx")
@@ -483,7 +483,7 @@ WklyHrSPTTUUtilities <- data_processing("data/WklyHrSPTTUUtilities.xlsx")
 WklyHrSPTTUWholesale <- data_processing("data/WklyHrSPTTUWholesale.xlsx")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # assign sectors
 
 WklyHrTotalPrivate$Industry <- c("Total Private")
@@ -507,7 +507,7 @@ WklyHrSPTTUUtilities$Industry <- c("Utilities")
 WklyHrSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # combine tables
 WklyHr_total <- rbind(WklyHrGoodsProducing, WklyHrServiceProviding)
 WklyHr_gp <- rbind(WklyHrGPMiningLogging, WklyHrGPConstruction,
@@ -519,7 +519,7 @@ WklyHr_sp_ttu <- rbind(WklyHrSPTTURetail, WklyHrSPTTUTransportationWarehousing, 
 
 #### Weekly overtime hours
 
-```{r}
+```{r,echo=FALSE}
 # Import and transform overtime data
 
 WklyOvertimeGPManufacturing <- data_processing("data/WklyOvertimeManufacturing.xlsx")
@@ -539,7 +539,7 @@ WklyOvertime <- rbind(WklyOvertimeGPMDurableGoods,
 
 ### Average hourly earnings
 
-```{r}
+```{r,echo=FALSE}
 # Import and transform hourly earnings data
 
 HrlyEarningsTotalPrivate <- data_processing("data/HrlyEarningsTotalPrivate.xlsx")
@@ -563,7 +563,7 @@ HrlyEarningsSPTTUUtilities <- data_processing("data/HrlyEarningsSPTTUUtilities.x
 HrlyEarningsSPTTUWholesale <- data_processing("data/HrlyEarningsSPTTUWholesale.xlsx")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # assign sectors
 
 HrlyEarningsTotalPrivate$Industry <- c("Total Private")
@@ -587,7 +587,7 @@ HrlyEarningsSPTTUUtilities$Industry <- c("Utilities")
 HrlyEarningsSPTTUWholesale$Industry <- c("Wholesale Trade")
 ```
 
-```{r}
+```{r,echo=FALSE}
 # combine tables
 HrlyEarnings_total <- rbind(HrlyEarningsGoodsProducing,
                             HrlyEarningsServiceProviding)
