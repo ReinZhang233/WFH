@@ -408,60 +408,39 @@ employees_total <- rbind(EmployeesGoodsProducing,                EmployeesServic
 employees_gp <- rbind(EmployeesGPMiningLogging, EmployeesGPConstruction,
                       EmployeesGPManufacturing)
 employees_gp_manu <- rbind(EmployeesGPMDurableGoods, EmployeesGPMNondurableGoods)
-employees_sp <- rbind(EmployeesSPEducationHealthServices, EmployeesSPFinancialActivities, EmployeesSPInformation, EmployeesSPLeisureHospitality, EmployeesSPOtherServices, EmployeesSPProfessionalBusinessService, EmployeesSPTradeTransportationUtilities)
+employees_sp <- rbind(EmployeesSPEducationHealthServices, EmployeesSPFinancialActivities, EmployeesSPInformation, EmployeesSPLeisureHospitality, EmployeesSPProfessionalBusinessService, EmployeesSPTradeTransportationUtilities, EmployeesSPOtherServices)
 employees_sp_ttu <- rbind(EmployeesSPTTURetail, EmployeesSPTTUTransportationWarehousing, EmployeesSPTTUUtilities, EmployeesSPTTUWholesale)
+employees_sectors <- rbind(EmployeesGPMiningLogging, 
+                      EmployeesGPConstruction,
+                      EmployeesGPManufacturing,
+                      EmployeesSPEducationHealthServices,
+                      EmployeesSPFinancialActivities, 
+                      EmployeesSPInformation, 
+                      EmployeesSPLeisureHospitality, 
+                      EmployeesSPProfessionalBusinessService,
+                      EmployeesSPTradeTransportationUtilities,
+                      EmployeesSPOtherServices)
 ```
 
 ```{r, echo=FALSE}
-library(gridExtra)
-ggplot(data = EmployeesTotalPrivate, aes(x = Label, y = Value,)) + 
-  geom_line() + 
-  theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021") +
-  xlab("Time") + ylab("Employees (in thousands)")
-
-ggplot(data = employees_total, aes(x = Label, y = Value,
+ggplot(data = employees_sectors, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021 by main sectors") +
-  xlab("Time") + ylab("Employees (in thousands)")
-
-#grid.arrange(p1, p2, ncol = 2)
-
-ggplot(data = employees_gp, aes(x = Label, y = Value,
-       group = as.factor(Industry), color = Industry)) + 
-  geom_line() + 
-  theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021 in Goods-producing sector") +
-  xlab("Time") + ylab("Employees (in thousands)")
-ggplot(data = employees_sp, aes(x = Label, y = Value,
-       group = as.factor(Industry), color = Industry)) + 
-  geom_line() + 
-  theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021 in Private Service Providing sector") +
-  xlab("Time") + ylab("Employees (in thousands)")
-#grid.arrange(p3, p4, ncol = 2)
-
-ggplot(data = employees_gp_manu, aes(x = Label, y = Value,
-       group = as.factor(Industry), color = Industry)) + 
-  geom_line() + 
-  theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021 in Manufacturing industry") +
+  ggtitle("Employment from 2011 to 2021 by subsectors") +
   xlab("Time") + ylab("Employees (in thousands)")
 ggplot(data = employees_sp_ttu, aes(x = Label, y = Value,
        group = as.factor(Industry), color = Industry)) + 
   geom_line() + 
   theme(axis.text.x=element_text(angle = 45)) +
-  ggtitle("Employment from 2011 to 2021 in Trade Transportation and Utilities industry") +
+  ggtitle("Employment from 2011 to 2021 in Trade Transportation and Utilities") +
   xlab("Time") + ylab("Employees (in thousands)")
-#grid.arrange(p5, p6, ncol = 2)
 ```
 
-From the time series plot for different sectors and sub-sectors, we can see that for all the industries, there was an abrupt drop in employees number at the beginning of 2020, around the time of March when the pandemic started spreading across the US. The only industry that did not fluctuate much is `Utilities`. This shows that this industry provides stable jobs.
+From the time series plot for different sub-sectors, we can see that for all the industries, there was an abrupt drop in employees number at the beginning of 2020, around the time of March when the pandemic started spreading across the US. The only industry that did not fluctuate much is Utilities. This shows that this industry provides stable jobs.
 
 ### Average weekly working hours and overtime hours
-#### weekly working hours
+
 ```{r,echo=FALSE}
 # Import and transform working hour data
 
@@ -518,27 +497,32 @@ WklyHr_gp <- rbind(WklyHrGPMiningLogging, WklyHrGPConstruction,
 WklyHr_gp_manu <- rbind(WklyHrGPMDurableGoods, WklyHrGPMNondurableGoods)
 WklyHr_sp <- rbind(WklyHrSPEducationHealthServices, WklyHrSPFinancialActivities, WklyHrSPInformation, WklyHrSPLeisureHospitality, WklyHrSPOtherServices, WklyHrSPProfessionalBusinessService, WklyHrSPTradeTransportationUtilities)
 WklyHr_sp_ttu <- rbind(WklyHrSPTTURetail, WklyHrSPTTUTransportationWarehousing, WklyHrSPTTUUtilities, WklyHrSPTTUWholesale)
+WklyHr_sectors <- rbind(WklyHr_gp, WklyHr_sp)
 ```
 
-#### Weekly overtime hours
+```{r, echo=FALSE}
+ggplot(data = WklyHrTotalPrivate, aes(x = Label, y = Value,)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Average weekly working hours from 2011 to 2021") +
+  xlab("Year") + ylab("Average hours worked per week")
 
-```{r,echo=FALSE}
-# Import and transform overtime data
+ggplot(data = WklyHr_sectors, aes(x = Label, y = Value,
+       group = as.factor(Industry), color = Industry)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Avg Weekly working hours from 2011 to 2021 in subsectors") +
+  xlab("Year") + ylab("Average hours worked per week")
 
-WklyOvertimeGPManufacturing <- data_processing("data/WklyOvertimeManufacturing.xlsx")
-WklyOvertimeGPMDurableGoods <- data_processing("data/WklyOvertimeMDurableGoods.xlsx")
-WklyOvertimeGPMNondurableGoods <- data_processing("data/WklyOvertimeMNondurableGoods.xlsx")
-
-# assign sectors
-
-WklyOvertimeGPManufacturing$Industry <- c("Manufacturing")
-WklyOvertimeGPMDurableGoods$Industry <- c("Durable Goods")
-WklyOvertimeGPMNondurableGoods$Industry <- c("Nondurable Goods")
-
-# combine tables
-WklyOvertime <- rbind(WklyOvertimeGPMDurableGoods,
-                      WklyOvertimeGPMNondurableGoods)
+ggplot(data = WklyHr_sp_ttu, aes(x = Label, y = Value,
+       group = as.factor(Industry), color = Industry)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Avg Weekly working hours from 2011 to 2021 in Trade Transportation and Utilities industry") +
+  xlab("Year") + ylab("Average hours worked per week")
 ```
+
+Looking at the first graph, we can see that in general there's a decrease in weekly working hours at the beginning of pandemic, then the hours started to increase to a new high point. Then by checking the the subsectors, it's clear that the weekly hours for industries in goods-producing sector dropped while that for industries in private service providing sector increased since the pandemic started. When looking at the hours worked for Utilities, we can see a gradual increase. This may be the result of more people working from home causing higher needs for maintenance. 
 
 ### Average hourly earnings
 
@@ -612,3 +596,19 @@ HrlyEarnings_sp_ttu <- rbind(HrlyEarningsSPTTURetail,
                              HrlyEarningsSPTTUWholesale)
 ```
 
+```{r,echo=FALSE}
+ggplot(data = HrlyEarnings_gp, aes(x = Label, y = Value,
+       group = as.factor(Industry), color = Industry)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Hourly Earning from 2011 to 2021 in Goods-producing sector") +
+  xlab("Time") + ylab("Earnings per hour ($)")
+ggplot(data = HrlyEarnings_sp, aes(x = Label, y = Value,
+       group = as.factor(Industry), color = Industry)) + 
+  geom_line() + 
+  theme(axis.text.x=element_text(angle = 45)) +
+  ggtitle("Hourly Earning from 2011 to 2021 in Private Service Providing sector") +
+  xlab("Time") + ylab("Earnings per hour ($)")
+```
+
+From these two graphs, it's apparent that the there's an inflation in earnings per hour after the pandemic started, and it's more obvious in the Private Service Providing sector. Recall that the average weekly working hours in goods-producing sector decreased while that in Private Service Providing sector, we can conclude that the employees in the Private Service Providing sector get higher payrolls after Covid-19 started spreading. Recall again from part 1 that the proportion of WFH increased since Covid-19, it's possible that there is a positive relationship between the proportion of WFH and payrolls in the Private Service Providing sector.
