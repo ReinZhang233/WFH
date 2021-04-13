@@ -51,7 +51,7 @@
     </style> 
 </head> 
  <div id="plot"></div> 
- <p style="font-size: 24px"> Click Text Bars ↓ </p>
+ <p style="font-size: 24px"  class="fancy"> Choose your interested sectors </p>
  <p id="business" >Change to Business Sector</p>
  <p id="durableGoods">Change to Durable Goods Sector</p>
  <p id="manufacturing">Change to Manufacturing Sector</p>

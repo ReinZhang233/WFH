@@ -1,7 +1,7 @@
 // Create svg and initial bars
 
 
-  var w = 500;
+  var w = 700;
   var h = 400;
   var margin = {top: 80, right: 0, bottom: 25,
       left: 50};
@@ -41,7 +41,7 @@
       .attr("y", 0)
       .attr("width", w)
       .attr("height", h)
-      .attr("fill", "lightblue");
+      .attr("fill", "lightgreen");
 
 // add bars as a group
 
@@ -56,7 +56,7 @@
       .attr("y", d => yScale(d))
       .attr("width", xScale.bandwidth())
       .attr("height", d => innerHeight - yScale(d))
-      .attr("fill", "blue");
+      .attr("fill", "green");
 
 // add axes
 
