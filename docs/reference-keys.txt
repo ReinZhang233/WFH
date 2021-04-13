@@ -16,8 +16,6 @@ relationship-between-producitivity-and-work-from-home-employees
 part-iii-employment-and-earnings
 employee-numbers
 average-weekly-working-hours-and-overtime-hours
-weekly-working-hours
-weekly-overtime-hours
 average-hourly-earnings
 interactive-component
 conclusion

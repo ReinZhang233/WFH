@@ -54,3 +54,8 @@
  <p id="nonFarm"><button type="button">Change to Non-farm Sector</button></p>
  
  <script src="scripts/interactive_bar.js"></script>
+ 
+<p> 
+The interactive bar graph shows the total number of Work From Home employees change in 2020 by month. 
+Click on the buttons, we can explore that each sector has the lowest rate of Work From Home employees in October.
+</p>
