@@ -3,9 +3,11 @@
 ## Lessons Learned
 This study found a number of notable associations between variables, which motivate further research.
 
-* Regarding the teleworking population, it has been continuously growing even before COVID happened. The unprecedented pandemic has suddenly increased the WFH population ratio over total employed populations. Among sectors, `Construction`, `Professional` and `Management, Business and Finance` tend to have rooms for increasing number of employees to telecommute on an daily basis.
+* Regarding the teleworking population, it has been continuously growing even before COVID happened. The unprecedented pandemic has suddenly increased the WFH population ratio over total employed populations, which could potentially mean that remote working is more stable than on-site working, given the situation. Among sectors, `Construction`, `Professional` and `Management, Business and Finance` tend to have rooms for increasing number of employees to telecommute on an daily basis.
 
 * From the graphs of section 5.2 part II, we conclude that there tends to be a positive correlation between Productivity and percentage of employees work from home. The result leads to an opposite direction as our initial thoughts. Three sectors (Manufacturing, Durable and Non-Durable Goods) decrease in productivity, whereas other sectors increase. Work hours decrease and unit labor costs both increase at the first quarter of 2020. 
+
+* There might be a positive correlation between salary and percentage of employees WFH in the private service providing sector, but not in goods-producing sector. This is consistent with our prediction since goods-producing usually requires employees to be on-site, while service providing does not.
 
 ## Limitations
 * As we have discussed in the data sources sections, one of the limitation with this study is with gaps within time series data. That post significant challenge for us to take a holistic view of the fluctuation in the WFH employees' population.
@@ -14,9 +16,11 @@ This study found a number of notable associations between variables, which motiv
 
 * Quarterly summarized data is not representative enough for visualization. For future studying, we will try to get more detailed data. 
 
+* We cannot draw a causal effect conclusion on the questions that we were looking at, because these are observational data and there is no control group.
+
 ## Future Directions
 Several directions to consider looking into in our future research:
 
-* Due to time limitation, in this project we only focused on the U.S employment records. In fact, COVID-19 as a global pandemic, has also posted huge influence on the working patterns for various countries around the globe. It might be a good direction to investigate in topics such as: Does WFH employees' ratio dependent on different countries or regions? 
+* Due to time limitation, in this project we only focused on the U.S employment records. In fact, COVID-19 as a global pandemic has also posted huge influence on the working patterns for various countries around the globe. It might be a good direction to investigate in topics such as: Does WFH employees' ratio dependent on different countries or regions? 
 
 * After studying the potential relationship between teleworking mode and productivity, we want to figure out the reason why productivity decrease in Manufacturing, Durable and Non-Durable Goods sectors. Hence we need to analyze the relationships between these three sectors and factory working hours.
