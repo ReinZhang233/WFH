@@ -41,7 +41,7 @@
       .attr("y", 0)
       .attr("width", w)
       .attr("height", h)
-      .attr("fill", "lightgreen");
+      .attr("fill", "white");
 
 // add bars as a group
 
@@ -72,8 +72,8 @@
 
   svg.append("text")
      .attr("transform", "translate(100,0)")
-     .attr("x", 5)
-     .attr("y", 20)
+     .attr("x", 15)
+     .attr("y", 40)
      .attr("font-size", "24px")
      .text("2020 WFH employees");
    

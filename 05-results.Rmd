@@ -135,21 +135,22 @@ productivity <- rbind(business_pro,nonfarm_business_pro,durable_goods_pro,non_du
 
 ```{r,echo=FALSE}
 # Create Time series plot of productivity from 2018 to 2020
-ggplot(data = productivity, aes(x = Label, y = Value,group = as.factor(Sector), color = Sector)) + 
-  geom_line() + 
+plot_df <- productivity
+plot_df$Sector <- substr(plot_df$Sector,1,8)
+ggplot(plot_df,aes(x = Label, y = Value,group = as.factor(Sector)))+
+  geom_line()+
+  facet_grid(as.factor(Sector)~.) +
   theme(axis.text.x=element_text(angle = 45)) +
   ggtitle("Labor productivity from 2018 to 2020") +
-  xlab("Time") + ylab("Output (per hour)")
-ggplot(productivity,aes(x = Label, y = Value,group = as.factor(Sector)))+
-  geom_point(size=1, color="#69b3a2") +
-  geom_line(color="#69b3a2")+
-  geom_hline(yintercept=0,alpha = 0.3,color = "#69b3a2")+
-  ggtitle("Labor productivity from 2018 to 2020") +
-  xlab("Time") +
-  ylab("Output (per hour)") + 
-  geom_area(fill = "#69b3a2",alpha = 0.4)+
-  facet_wrap(~as.factor(Sector)) +
-  theme(plot.title = element_text(size = 20, face = "bold"), axis.text.x=element_text(angle = 90))
+  xlab("Time") + ylab("Output (per hour)") +
+  theme(
+      strip.text.x = element_text(
+        size = 8, color = "blue"),
+      strip.text.y = element_text(
+        size = 8, color = "blue"),
+      strip.background = element_rect(
+     color="lightblue", fill="lightblue", size=3, linetype="solid"
+     ))
 ```
 
 From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might be caused by the increasing number of Work From Home employees.  

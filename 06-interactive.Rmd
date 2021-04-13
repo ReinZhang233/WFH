@@ -9,42 +9,36 @@
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          } 
          #durableGoods { 
             color:black; 
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          }
 	#manufacturing { 
             color:black; 
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          } 
 	#nonDurableGoods { 
             color:black; 
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          } 
  	#nonFinancial { 
             color:black; 
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          } 
 	#nonFarm { 
             color:black; 
             font-size:14px; 
             font-weight:bold; 
             text-align:center; 
-            border-style: dotted;
          } 
 	
 
@@ -52,11 +46,11 @@
 </head> 
  <div id="plot"></div> 
  <p style="font-size: 24px"  class="fancy"> Choose your interested sectors </p>
- <p id="business" >Change to Business Sector</p>
- <p id="durableGoods">Change to Durable Goods Sector</p>
- <p id="manufacturing">Change to Manufacturing Sector</p>
- <p id="nonDurableGoods">Change to Non-durable Goods Sector</p>
- <p id="nonFinancial">Change to Non-financial Corporations Sector</p>
- <p id="nonFarm">Change to Non-farm Sector</p>
+ <p id="business" ><button type="button">Change to Business Sector</button></p>
+ <p id="durableGoods"><button type="button">Change to Durable Goods Sector</button></p>
+ <p id="manufacturing"><button type="button">Change to Manufacturing Sector</button></p>
+ <p id="nonDurableGoods"><button type="button">Change to Non-durable Goods Sector</button></p>
+ <p id="nonFinancial"><button type="button">Change to Non-financial Corporations Sector</button></p>
+ <p id="nonFarm"><button type="button">Change to Non-farm Sector</button></p>
  
  <script src="scripts/interactive_bar.js"></script>
