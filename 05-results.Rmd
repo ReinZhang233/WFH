@@ -153,7 +153,7 @@ ggplot(plot_df,aes(x = Label, y = Value,group = as.factor(Sector)))+
      ))
 ```
 
-From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. `Manufacturing` and `Durable Goods` sectors have a sudden decrease and other sectors had a sudden increase. This might be caused by the increasing number of Work From Home employees.  
+From the time series subplots, we can see that the output has a abrupt change at 2020 first and second quarter. `Manufacturing`, `Durable Goods` and `Non-Durable Goods` sectors have a sudden decrease and other sectors had a sudden increase. The increasing number of Work From Home employees might be the reason that causes this change.  
 
 
  
