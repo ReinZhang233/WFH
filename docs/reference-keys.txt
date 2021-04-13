@@ -21,3 +21,6 @@ weekly-overtime-hours
 average-hourly-earnings
 interactive-component
 conclusion
+lessons-learned
+limitations
+future-directions
