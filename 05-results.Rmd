@@ -1,6 +1,6 @@
 # Results
 
-## Part I: Employees before and after COVID-19
+## Part I: WFH Employees before and after COVID-19
 ```{r libs and df, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -29,7 +29,7 @@ ggplot(data = wfh,aes(x = Year,y = Population,fill = Sector))+
   ggtitle("Time Series Analysis on Telework Population for different Sectors")
 ```
 
-Overall, the general population of telework employees tend to increase over the last 10 years. Among all the sectors being investigated, Service and Management,Business and Financial Sector seemed contribute to the increase in work-from-home employees' population the most.
+Overall, the general population of telework employees tend to increase over the last 10 years. Among all the sectors being investigated, `Service` and `Management,Business and Financial` Sector seemed contribute to the increase in work-from-home employees' population the most.
 
 ```{r,warning=F,message=F,echo=FALSE}
 #create line plots representing the change in WFH employees over total employed percentages before COVID
@@ -64,7 +64,7 @@ ggplot(new_perc_change,aes(x = Year,y = change))+
   theme(plot.title = element_text(size = 20, face = "bold"))
 ```
 
-The plot above shows the fluctuation of growth rate with WFH population within selected Sectors over years. We can see that some Sectors, such as Construction, Production, Office and Administration, Services and Transportation seem to have high volatility in the changes of WFH population percentages, with fluctuation ranging between -0.5% to 1%. Management, Business, Financial and Professional Sectors seem to have less fluctuation in the change of rate.
+The plot above shows the fluctuation of growth rate with WFH population within selected Sectors over years. We can see that some Sectors, such as `Construction`, `Production`, `Office and Administration`, `Services` and `Transportation` seem to have high volatility in the changes of WFH population percentages, with fluctuation ranging between -0.5% to 1%. `Management, Business and Financial` and `Professional` Sectors seem to have less fluctuation in the change of rate.
 
 
 ```{r,warning=F,message=F,echo=FALSE}
@@ -89,7 +89,7 @@ ggplot(data = wfh_aft,aes(x = Year,y = Population,fill = Status))+
 
 ```
 
-In general, we can see that the increase of telework population due to covid has a greater portion among the number of all employed workers starting from May 2020 and its proportion started to decrease as time pass by. Even though we could not get the data before May 2020, this trend may suggest that at the beginning of 2020, when COVID had just begun, the ratio of covid-lead WFH population over the total employed population would be even higher. Another trend we can see from the graph is that the total employed workers' number is gradually increasing.
+In general, we can see that the increase of telework population due to COVID has a greater portion among the number of all employed workers starting from May 2020 and its proportion started to decrease as time pass by. Even though we could not get the data before May 2020, this trend may suggest that at the beginning of 2020, when COVID had just begun, the ratio of COVID-lead WFH population over the total employed population would be even higher. Another trend we can see from the graph is that the total employed workers' number is gradually increasing.
 
 
 
@@ -153,7 +153,7 @@ ggplot(plot_df,aes(x = Label, y = Value,group = as.factor(Sector)))+
      ))
 ```
 
-From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. Manufacturing and Durable Goods sectors have a sudden decrease and other sectors had a sudden increase. This might be caused by the increasing number of Work From Home employees.  
+From the time series plot and subplots, we can see that the output has a abrupt change at 2020 first and second quarter. `Manufacturing` and `Durable Goods` sectors have a sudden decrease and other sectors had a sudden increase. This might be caused by the increasing number of Work From Home employees.  
 
 
  
@@ -324,7 +324,7 @@ ggplot(data = WFH_prod_df, aes(x = WFM_qt_pct, y = Value)) +
 
 ```
 
-From the previous sections, we find that Work hours decrease and production increase in first and sector quarter of 2020. This means that the efficiency has increased, which might be caused by teleworking. Hence, we make a scatter plot to illustrate the relationship between Productivity and WFH employees. The scatterplot indicates that there is a positive correlation between two variables. As the percentage of WFH employees increase, the Productivity tends to increase.  
+From the previous sections, we find that Work hours decrease and production increase in first and sector quarter of 2020. This means that the efficiency has increased, which might be caused by teleworking. Hence, we make a scatter-plot to illustrate the relationship between Productivity and WFH employees. The scatter-plot indicates that there is a positive correlation between two variables. As the percentage of WFH employees increase, the Productivity tends to increase.  
 
 
 ## Part III: Employment and earnings
@@ -458,7 +458,7 @@ ggplot(data = employees_sp_ttu, aes(x = Label, y = Value,
 #grid.arrange(p5, p6, ncol = 2)
 ```
 
-From the time series plot for different sectors and sub-sectors, we can see that for all the industries, there was an abrupt drop in employees number at the beginning of 2020, around the time of March when the pandemic started spreading across the US. The only industry that did not fluctuate much is Utilities. This shows that this industry provides stable jobs.
+From the time series plot for different sectors and sub-sectors, we can see that for all the industries, there was an abrupt drop in employees number at the beginning of 2020, around the time of March when the pandemic started spreading across the US. The only industry that did not fluctuate much is `Utilities`. This shows that this industry provides stable jobs.
 
 ### Average weekly working hours and overtime hours
 #### weekly working hours

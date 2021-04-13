@@ -73,7 +73,7 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#data-description"><i class="fa fa-check"></i><b>2.1</b> Data Description</a></li>
-<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#limitations"><i class="fa fa-check"></i><b>2.2</b> Limitations</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#issuesproblems-with-data"><i class="fa fa-check"></i><b>2.2</b> Issues/Problems with Data</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
@@ -81,7 +81,7 @@
 <li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#missing-data-in-productivity-features"><i class="fa fa-check"></i><b>4.2</b> Missing data in Productivity features</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
-<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#part-i-employees-before-and-after-covid-19"><i class="fa fa-check"></i><b>5.1</b> Part I: Employees before and after COVID-19</a></li>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#part-i-wfh-employees-before-and-after-covid-19"><i class="fa fa-check"></i><b>5.1</b> Part I: WFH Employees before and after COVID-19</a></li>
 <li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#part-ii-productivity"><i class="fa fa-check"></i><b>5.2</b> Part II: Productivity</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="results.html"><a href="results.html#labor-productivity"><i class="fa fa-check"></i><b>5.2.1</b> Labor Productivity</a></li>
 <li class="chapter" data-level="5.2.2" data-path="results.html"><a href="results.html#work-hours"><i class="fa fa-check"></i><b>5.2.2</b> Work hours</a></li>
@@ -126,8 +126,8 @@
 <li><p>We also considered <a href="https://beta.bls.gov/dataQuery/find?st=220&amp;r=20&amp;s=score%3AD&amp;fq=survey:%5Bpr%5D&amp;more=0">U.S. BLS Beta Labs</a> as our second resource. It provided time-series employment productivity data. We wanted to show the trend of industrial-wise productivity with its correlation with the WFH portion of the labor force, so we selected the quarterly data from 2018 to 2020 by different sectors. There were six sectors in total: <code>Business</code>, <code>Non-farm business</code>, <code>Manufacturing</code>, <code>Durable goods</code>, <code>Non-durable goods</code> and <code>Non-financial corporations</code>. In order to compare the productivity changes, we took several features: <code>Productivity</code>, <code>Working hours</code> and <code>Unit labor costs</code>. For data from each sector and each feature, we chose the same unit for comparison: output per hour for labor productivity, average weekly hours for working hours and unit labor costs. The source provided us with 18 raw data tables in total, we would merge and combine these data tables to come up with several visualized plots.</p></li>
 </ul>
 </div>
-<div id="limitations" class="section level2">
-<h2><span class="header-section-number">2.2</span> Limitations</h2>
+<div id="issuesproblems-with-data" class="section level2">
+<h2><span class="header-section-number">2.2</span> Issues/Problems with Data</h2>
 <p>Though the data provides suitable information for our topic, it has some limitations. One issue is that for covid-concurrent data, we can only have access to the monthly summaries no earlier than May, 2020, while the before-covid datasets only have yearly summaries, which end at 2019. Since we don’t have the first several month’s data for 2020, we cannot generate a yearly summary from the covid-concurrent table. That would give us a data gap from Jan to May of 2020. We might need to give an estimate or generate a visualization of the trend when dealing with this problem. Another issue is that there is no direct data linking employment payrolls with WFH. We will need to utilize the resources in the first two links in hope to generate some insights on the change in number of WFH laborers and its possible effect on payroll amounts.</p>
 <p>For the data extracted from U.S. BLS Beta Labs, those data sets are quarterly averaged or weekly averaged. Since data for a more specific time period was not published, we could not depict a more time-sensitive change. Also, we were not able to get the first quarter data of 2021. For work from home data, we have a missing value, but this did not influence the initial analysis. Missing values were stated in “04-missing part”. Another issue was that the sources provided different definitions for industrial sectors, so the sectors for productivity and payrolls could not be uniformed. To solve this issue, we matched some of the sectors to estimate our data.</p>
 

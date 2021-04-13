@@ -1,13 +1,13 @@
 introduction
 data-sources
 data-description
-limitations
+issuesproblems-with-data
 data-transformation
 missing-values
 missing-data-in-wfh-employees-population-by-occupation-sectors
 missing-data-in-productivity-features
 results
-part-i-employees-before-and-after-covid-19
+part-i-wfh-employees-before-and-after-covid-19
 part-ii-productivity
 labor-productivity
 work-hours

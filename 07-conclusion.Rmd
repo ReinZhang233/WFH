@@ -1,2 +1,5 @@
 # Conclusion
 
+This study found a number of notable associations between variables, which motivate further research.
+
+* 
